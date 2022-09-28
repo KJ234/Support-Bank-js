@@ -20,7 +20,9 @@
   "dependencies": {
     "csv-parser": "^3.0.0",
     "fs": "0.0.1-security",
+    "i": "^0.3.7",
     "moment": "^2.29.4",
+    "npm": "^8.19.2",
     "readline-sync": "^1.4.10"
   }
 }
