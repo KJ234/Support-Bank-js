@@ -1,6 +1,18 @@
-const logger = log4js.getLogger('DodgyTransactions2015');
 
-log4js.configure({
+
+
+import fs from "fs"
+import  csv  from 'csv-parser'
+import Log4js from "log4js"
+import readlineSync from "readline-sync"
+
+let contents = fs.readFileSync('./Transactions2014.csv', "utf-8")
+
+//logging 
+
+let logger = Log4js.getLogger('Transactions2014.csv');
+
+Log4js.configure({
   appenders: {
       file: { type: 'fileSync', filename: 'logs/debug.log' }
   },
@@ -10,17 +22,9 @@ log4js.configure({
 });
 
 
-import fs from "fs"
-import  csv  from 'csv-parser'
-
-import readlineSync from "readline-sync"
-
-let contents = fs.readFileSync('./Transactions2014.csv', "utf-8")
-
-
 // class for account
 
-class amount {
+class account {
     constructor (name, money) {
         this.name = 'name'
         this.money = 0
@@ -38,9 +42,9 @@ class transactions {
     }
 }
 
-// display all accounts
+// display all people
 
-let accounts = [ "Ben B",
+let people = [ "Ben B",
 "Rob S",
 "Sam N",
 "Sarah T",
@@ -53,22 +57,25 @@ let accounts = [ "Ben B",
 "Todd",
 "Jon A",
 "ALL",],
-index = readlineSync.keyInSelect(accounts, 'Which Account?');
-console.log('Ok, ' + accounts[index] + " 's ...  transactions now.");
-let choice = accounts[index]
 
+// conversation with the user via a console
+index = readlineSync.keyInSelect(people, 'Which Account?');
+console.log('Ok, ' + people[index] + " 's ...  transactions now.");
+let choice = people[index]
+
+// console all information from .csv file
 if (choice === "ALL") {
   console.log(contents);
-}
+} 
 
 
 
-const results = [];
+// const results = [];
 
-fs.createReadStream('Transactions2014.csv')
-  .pipe(csv())
-  .on('data', (data) => results.push(data))
-  .on('end', () => {
-    console.log(results);
-  });
+// fs.createReadStream('Transactions2014.csv')
+//   .pipe(csv())
+//   .on('data', (data) => results.push(data))
+//   .on('end', () => {
+//     console.log(results);
+//   });
 
