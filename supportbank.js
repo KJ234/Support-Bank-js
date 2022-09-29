@@ -1,6 +1,3 @@
-
-
-
 import fs from "fs"
 import  csv  from 'csv-parser'
 import Log4js from "log4js"
@@ -8,9 +5,8 @@ import readlineSync from "readline-sync"
 
 let contents = fs.readFileSync('./Transactions2014.csv', "utf-8")
 
-//logging 
-
-let logger = Log4js.getLogger('Transactions2014.csv');
+//logging
+let logger = Log4js.getLogger('DodgyTransactions2015.csv');
 
 Log4js.configure({
   appenders: {
@@ -21,29 +17,24 @@ Log4js.configure({
   }
 });
 
-
 // class for account
-
-class account {
+class Account {
     constructor (name, money) {
         this.name = 'name'
         this.money = 0
     }
 }
-
 // class for transactions - to, form , narrative, amount, the date
-
-class transactions {
+class Transactions {
     constructor (to, from, narrative, amount, date) {
         this.to = 'to'
         this.from = 'from'
         this.narrative = 'narrative'
         this.date = 'date'
     }
-} +
+}
 
 // display all people
-
 let people = [ "Ben B",
 "Rob S",
 "Sam N",
@@ -65,17 +56,16 @@ let choice = people[index]
 
 // console all information from .csv file
 if (choice === "ALL") {
-  console.log(contents);
-} 
+    console.log(contents);
+}
 
+let results = [];
 
+fs.createReadStream('Transactions2014.csv')
+  .pipe(csv())
+  .on('data', (data) => results.push(data))
+  .on('end', () => {
+    ;
+  });
 
-// const results = [];
-
-// fs.createReadStream('Transactions2014.csv')
-//   .pipe(csv())
-//   .on('data', (data) => results.push(data))
-//   .on('end', () => {
-//     console.log(results);
-//   });
 
