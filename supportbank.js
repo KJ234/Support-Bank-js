@@ -5,12 +5,7 @@ import readlineSync from "readline-sync"
 
 let contents = fs.readFileSync('./Transactions2014.csv', "utf-8")
 
-<<<<<<< HEAD
 //logging
-=======
-//logging 
-
->>>>>>> 9cd15a012027045651ad4f443409f5f5e4ddeecc
 let logger = Log4js.getLogger('DodgyTransactions2015.csv');
 
 Log4js.configure({
@@ -22,12 +17,6 @@ Log4js.configure({
   }
 });
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 9cd15a012027045651ad4f443409f5f5e4ddeecc
 // class for account
 class Account {
     constructor (name, money) {
