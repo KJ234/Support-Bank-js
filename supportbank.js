@@ -4,6 +4,9 @@ import Log4js from "log4js"
 import readlineSync from "readline-sync"
 
 let contents = fs.readFileSync('./Transactions2014.csv', "utf8")
+let transactions = [];
+let accountNames = [];
+let accounts = [];
 
 //logging
 let logger = Log4js.getLogger('DodgyTransactions2015.csv');
