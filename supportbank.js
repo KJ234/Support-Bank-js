@@ -1,4 +1,4 @@
-const logger = log4js.getLogger('<filename>');
+const logger = log4js.getLogger('DodgyTransactions2015');
 
 log4js.configure({
   appenders: {
@@ -24,8 +24,10 @@ console.log (contents)
 
 
 let accounts = ["Ben B","Chris W","Dan W",],
-index = readlineSync.keyInSelect(accounts, 'Which animal?');
+index = readlineSync.keyInSelect(accounts, 'Which Account?');
 console.log('Ok, ' + accounts[index] + ' has ... pounds in his account.');
+
+
 
 
 
