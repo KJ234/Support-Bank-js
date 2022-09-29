@@ -16,18 +16,50 @@ import  csv  from 'csv-parser'
 import readlineSync from "readline-sync"
 
 let contents = fs.readFileSync('./Transactions2014.csv', "utf-8")
-console.log (contents)
 
 
 // class for account
+
+class amount {
+    constructor (name, money) {
+        this.name = 'name'
+        this.money = 0
+    }
+}
+
 // class for transactions - to, form , narrative, amount, the date
 
+class transactions {
+    constructor (to, from, narrative, amount, date) {
+        this.to = 'to'
+        this.from = 'from'
+        this.narrative = 'narrative'
+        this.date = 'date'
+    }
+}
 
-let accounts = ["Ben B","Chris W","Dan W",],
+// display all accounts
+
+let accounts = [ "Ben B",
+"Rob S",
+"Sam N",
+"Sarah T",
+"Stephan S",
+"Chris W",
+"Laura B",
+"Tim L",
+"Dan W",
+"Gergana I",
+"Todd",
+"Jon A",
+"ALL",],
 index = readlineSync.keyInSelect(accounts, 'Which Account?');
-console.log('Ok, ' + accounts[index] + ' has ... pounds in his account.');
+console.log('Ok, ' + accounts[index] + " 's ...  transactions now.");
+let choice = accounts[index]
 
-
+if (choice === "ALL") {
+  console.log(contents);
+}
 
 
 
@@ -40,5 +72,3 @@ fs.createReadStream('Transactions2014.csv')
     console.log(results);
   });
 
-
-  
