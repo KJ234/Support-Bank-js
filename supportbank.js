@@ -40,7 +40,7 @@ class transactions {
         this.narrative = 'narrative'
         this.date = 'date'
     }
-}
+} +
 
 // display all people
 
