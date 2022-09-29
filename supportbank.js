@@ -10,7 +10,7 @@ let contents = fs.readFileSync('./Transactions2014.csv', "utf-8")
 
 //logging 
 
-let logger = Log4js.getLogger('Transactions2014.csv');
+let logger = Log4js.getLogger('DodgyTransactions2015.csv');
 
 Log4js.configure({
   appenders: {
@@ -20,6 +20,8 @@ Log4js.configure({
       default: { appenders: ['file'], level: 'debug'}
   }
 });
+
+
 
 
 // class for account
