@@ -9,7 +9,7 @@ let accountNames = [];
 let accounts = [];
 
 //logging
-let logger = Log4js.getLogger('DodgyTransactions2015.csv');
+
 
 Log4js.configure({
   appenders: {
@@ -19,6 +19,7 @@ Log4js.configure({
       default: { appenders: ['file'], level: 'debug'}
   }
 });
+
 // class for account
 class Account {
   constructor(name, money) {
@@ -35,10 +36,12 @@ class Transaction {
     this.amount = amount;
   }
 }
-const makeString = contents.split("\n");
+//split into new line
+let makeString = contents.split("\n");
+
 
 for (let i = 0; i < makeString.length; i++) {
-  const transactionsAsArray = makeString[i].split(",");
+  let transactionsAsArray = makeString[i].split(",");
   transactions.push(
     new Transaction(
       transactionsAsArray[0],
