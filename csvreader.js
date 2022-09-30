@@ -1,6 +1,19 @@
-import fs from "fs"
+import { readFileSync } from 'fs';
+import {parse as csvParseSync} from 'csv-parse/sync';
+import moment from 'moment';
+import Transaction from './transaction.js';
 
-export default function readCSV(filename){
-    let contents = fs.readFileSync(filename, {encoding: "utf-8",})
-    console.log(contents)
+function parseRecordToTransaction(record) {
+    return new Transaction(
+        moment(record.Date, 'DD/MM/YYYY'),
+        record.From,
+        record.To,
+        record.Narrative,
+        +record.Amount
+    );
+}
+
+export default function getTransactions(filePath, encoding) {
+    let data = readFileSync(filePath, {encoding});
+    return csvParseSync(data, {columns: true}).map(parseRecordToTransaction);
 }
